@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="hero-description"
             >
-              Experienced ML Engineer with diverse experience across industries, 
+              Experienced AI Developer & ML Engineer with diverse experience across industries, 
               specializing in Python programming, predictive modelling, deep learning, 
               cloud deployment, and AI solutions.
             </motion.p>

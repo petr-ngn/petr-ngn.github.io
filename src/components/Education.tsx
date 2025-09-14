@@ -153,29 +153,6 @@ const Education: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        <motion.div
-          className="education-summary"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="summary-stats">
-            <div className="summary-stat">
-              <span className="stat-number">2</span>
-              <span className="stat-label">Master's Degrees</span>
-            </div>
-            <div className="summary-stat">
-              <span className="stat-number">1</span>
-              <span className="stat-label">Bachelor's Degree</span>
-            </div>
-            <div className="summary-stat">
-              <span className="stat-number">6+</span>
-              <span className="stat-label">Awards & Honors</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

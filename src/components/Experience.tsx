@@ -38,6 +38,17 @@ const Experience: React.FC = () => {
       tools: 'Python, AWS, AWS Bedrock, CI/CD, Docker, Linux, Bash, GitLab, Amazon EC2, Amazon Comprehend, AWS Lambda, Terraform'
     },
     {
+      title: 'Data Science Mentor/Coach',
+      company: 'Czechitas',
+      location: 'Prague, Czech Republic',
+      period: '05/2025 - present',
+      type: 'Volunteer',
+      description: [
+        'Volunteering at a non-profit organization helping women to enter the IT world. Mentoring 2 students in Digital Academy and consulting their project. Coaching classes in AI, Python programming and Data Science.'
+      ],
+      tools: 'Python, SQL'
+    },
+    {
       title: 'Lead AI & ML Engineer',
       company: 'LutherOne',
       location: 'Prague, Czech Republic',
