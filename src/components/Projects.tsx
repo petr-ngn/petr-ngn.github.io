@@ -46,18 +46,12 @@ const Projects: React.FC = () => {
     },
     {
       id: 6,
-      title: 'Attrition Modelling',
-      description: "Automation of financial information extraction from companies‘ balance sheets and P/L statements, including web scraping of companies's data, and financial analysis based on custom knowledge bases, OCR and web scraped data via LLM. All packaged as a web application with an UI for easy usage.",
-      technologies: ['Python', 'Polars', 'Scikit-learn', 'PyTorch', 'Optuna', 'OptBining', 'SHAP', 'AWS SageMaker', 'AWS ECR', 'AWS Step Functions', 'AWS Glue'],
-    },
-    {
-      id: 7,
       title: 'Internal LLM-based Web Apps',
       description: "Web application development for automation of internal tasks, mainly in Data Science team and Customer Success/Experience team (e.g., chatbots, data analysis, PowerPoint preparation, Excel preparation, text summarization, report generation, etc.)",
       technologies: ['Python', 'Streamlit', 'AWS', 'Docker', 'AWS EC2', 'AWS Cognito', 'GitLab', 'Terraform', 'Poetry', 'AWS ECR', 'AWS Lambda', 'AWS Route53', 'Amazon Q', 'NGINX', 'Linux'],
     },
     {
-      id: 8,
+      id: 7,
       title: 'Web Application for Skill Matching of IT Volunteers  ',
       description: 'Web application for recruiters for finding the most suitable IT volunteers for non-profit projects based on custom algorithm for skill matching.',
       githubUrl: 'https://github.com/petr-ngn/deepnote-hackathon',
