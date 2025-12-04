@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://petr-ngn.github.io/sitemap.xml
+
