@@ -27,24 +27,26 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "react-snap",
+    "postbuild": "node scripts/postbuild.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "reactSnap": {
-    "inlineCss": true,
+    "inlineCss": false,
     "minifyHtml": {
       "collapseWhitespace": false,
       "removeComments": false
     },
     "puppeteerArgs": [
       "--no-sandbox",
-      "--disable-setuid-sandbox"
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu"
     ],
     "skipThirdPartyRequests": true,
     "cacheAjaxRequests": false,
     "fixWebpackChunksIssue": false,
-    "waitFor": 2500,
+    "waitFor": 3000,
     "removeStyleTags": false,
     "removeScriptTags": false,
     "puppeteerExecutablePath": null,
@@ -52,7 +54,9 @@
     "crawl": true,
     "include": [
       "/"
-    ]
+    ],
+    "puppeteerIgnoreHTTPSErrors": true,
+    "puppeteerIgnoreDefaultArgs": false
   },
   "eslintConfig": {
     "extends": [

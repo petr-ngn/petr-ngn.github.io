@@ -11,16 +11,30 @@ import Footer from './components/Footer';
 import './App.css';
 
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // Check if we're in a browser (not during pre-rendering)
+  const isBrowser = typeof window !== 'undefined' && 
+    window.navigator && 
+    window.navigator.userAgent && 
+    !window.navigator.userAgent.includes('HeadlessChrome');
+  
+  // Start with no loading screen to avoid hydration mismatches
+  // Only show loading screen in actual browser, not during pre-rendering
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    // Simulate loading time
+    // Only show loading screen in actual browser
+    if (!isBrowser) {
+      return;
+    }
+    
+    // Show loading screen briefly
+    setIsLoading(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isBrowser]);
 
   if (isLoading) {
     return (
