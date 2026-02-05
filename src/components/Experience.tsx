@@ -27,7 +27,7 @@ const Experience: React.FC = () => {
       tools: 'Python, Azure, OpenAI, Terraform, Azure Functions, Azure App Services, GitLab, Azure Document Intelligence, Azure AI Vision'
     },
     {
-      title: 'AI Engineer \& Architect Consultant',
+      title: 'AI Engineer & Architect Consultant',
       company: 'LutherOne',
       location: 'Prague, Czech Republic',
       period: '07/2025 - present',
