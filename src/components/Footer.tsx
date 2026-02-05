@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
           
           <div className="footer-section">
             <p className="entrepreneur-info">
-            Entrepreneur Identification Code: <span className="placeholder">20250723</span>
+            Entrepreneur Identification Code: <span className="placeholder">23238488</span>
             </p>
           </div>
         </motion.div>
