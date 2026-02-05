@@ -22,12 +22,12 @@ const Experience: React.FC = () => {
       period: '05/2025 - present',
       type: 'Contractor',
       description: [
-        'Helping business to develop custom AI solutions, including predictive modelling or OCR and LLM applications.'
+        'Helping business to develop custom AI solutions, including predictive modelling or OCR and LLM-based applications.'
       ],
       tools: 'Python, Azure, OpenAI, Terraform, Azure Functions, Azure App Services, GitLab, Azure Document Intelligence, Azure AI Vision'
     },
     {
-      title: 'AI Engineer Consultant',
+      title: 'AI Engineer \& Architect Consultant',
       company: 'LutherOne',
       location: 'Prague, Czech Republic',
       period: '07/2025 - present',
@@ -38,7 +38,7 @@ const Experience: React.FC = () => {
       tools: 'Python, AWS, AWS Bedrock, CI/CD, Docker, Linux, Bash, GitLab, Amazon EC2, Amazon Comprehend, AWS Lambda, Terraform'
     },
     {
-      title: 'Data Science Mentor/Coach',
+      title: 'AI & Data Science Mentor/Coach',
       company: 'Czechitas',
       location: 'Prague, Czech Republic',
       period: '05/2025 - present',
