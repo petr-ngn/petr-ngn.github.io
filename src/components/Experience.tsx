@@ -22,9 +22,9 @@ const Experience: React.FC = () => {
       period: '05/2025 - present',
       type: 'Contractor',
       description: [
-        'Helping business to develop custom AI solutions, including predictive modelling or OCR and LLM-based applications.'
+        'Helping business to develop custom and deliver end-to-end AI solutions, ML predictive modelling systems, OCR engines, Multi-agent orchestrated platforms, MCP server development. Overseeing MLOps, DevOps, including CI/CD pipelines and cloud infrastructure, and presales activities with PoC\'s building for clients.'
       ],
-      tools: 'Python, Azure, OpenAI, Terraform, Azure Functions, Azure App Services, GitLab, Azure Document Intelligence, Azure AI Vision'
+      tools: 'Python, FastAPI, Azure, OpenAI, Terraform, FastMCP, Azure Container Apps, API Gateway, Azure Functions, Azure App Services, GitLab, Azure Document Intelligence, Azure AI Vision, OpenAI Apps SDK, Jenkins'
     },
     {
       title: 'AI Engineer & Architect Consultant',
@@ -35,7 +35,7 @@ const Experience: React.FC = () => {
       description: [
         'Providing consultancy services and AI expertise to a HR-tech B2B start-up, including LLM deployment and integration into a platform product, AI tasks automation, RAG systems, AI agents, and other AI/ML support for a Data Science team.'
       ],
-      tools: 'Python, AWS, AWS Bedrock, CI/CD, Docker, Linux, Bash, GitLab, Amazon EC2, Amazon Comprehend, AWS Lambda, Terraform'
+      tools: 'Python, TypeScript, Terraform, Redis, LangGraph, LangChain, LangSmith, AWS, AWS Bedrock, CI/CD, Docker, Linux, Bash, GitLab, Amazon EC2, Amazon Comprehend, AWS Lambda, MongoDB'
     },
     {
       title: 'AI & Data Science Mentor/Coach',

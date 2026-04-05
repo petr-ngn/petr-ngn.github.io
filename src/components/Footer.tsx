@@ -24,6 +24,7 @@ const Footer: React.FC = () => {
           <div className="footer-section">
             <p className="entrepreneur-info">
             Entrepreneur Identification Code: <span className="placeholder">23238488</span>
+            (The subject is also registered as a VAT payer)
             </p>
           </div>
         </motion.div>

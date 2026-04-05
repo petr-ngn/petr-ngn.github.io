@@ -14,12 +14,12 @@ const About: React.FC = () => {
     {
       icon: <FaPython />,
       title: 'Python Development',
-      description: 'Expert in Python programming, data science, and ML libraries'
+      description: 'Expert in Python programming, backend development, data science, and ML libraries'
     },
     {
       icon: <FaBrain />,
       title: 'AI & Machine Learning',
-      description: 'Deep learning, predictive modeling, and LLM applications'
+      description: 'Deep learning, predictive modeling, model tuning and deployment, MLOps, and LLM applications'
     },
     {
       icon: <FaCloud />,
@@ -39,7 +39,7 @@ const About: React.FC = () => {
     {
       icon: <FaRocket />,
       title: 'DevOps & CI/CD',
-      description: 'Automated deployment and infrastructure management'
+      description: 'Automated deployment and infrastructure management via CI/CD pipelines & Terraform'
     }
   ];
 
@@ -87,17 +87,17 @@ const About: React.FC = () => {
         >
           <h3>Who I Am</h3>
           <p>
-            I'm an experienced ML Engineer / AI Developer / Python Developer / Data Scientist 
+            I'm an experienced full-stack AI Developer / ML Engineer / Python Developer / DevOps Specialist / Data Scientist 
             with diverse experience across industries including banking, Big 4 consulting, 
-            start-up, and non-profit sectors. Currently, I work as a Data Scientist / Gen AI 
+            start-up, and non-profit sector. Currently, I work as a Data Scientist / Gen AI 
             Developer at BigHub, helping enterprises leverage AI for a data-driven edge.
           </p>
           
           <p>
-            I also serve as an AI Engineer Consultant at HR-tech start-up LutherOne, where I 
-            provide AI expertise to deploy and integrate LLM features into products. My 
+            I also serve as an AI Engineer & Architect Consultant at HR-tech start-up LutherOne, where I 
+            provide AI expertise to design end-to-end AI-based systems and integrate LLM features into products. My 
             excellence lies in Python programming, predictive modelling, deep learning, 
-            cloud deployment, machine learning, web app development and AI.
+            cloud deployment, devOps, machine learning, web app development and AI.
           </p>
 
           <p>
@@ -161,8 +161,10 @@ const About: React.FC = () => {
                 <span className="tech-tag">Docker</span>
                 <span className="tech-tag">Linux</span>
                 <span className="tech-tag">Terraform</span>
+                <span className="tech-tag">Jenkins</span>
                 <span className="tech-tag">GitLab CI/CD</span>
                 <span className="tech-tag">GitHub Actions</span>
+                <span className="tech-tag">Azure DevOps</span>
               </div>
             </div>
             
@@ -179,7 +181,23 @@ const About: React.FC = () => {
                 <span className="tech-tag">AWS SageMaker</span>
                 <span className="tech-tag">LangChain</span>
                 <span className="tech-tag">LangGraph</span>
+                <span className="tech-tag">LangSmith</span>
                 <span className="tech-tag">Pydantic</span>
+              </div>
+            </div>
+
+            <div className="language-category">
+              <h4>Web Development</h4>
+              <div className="tech-tags">
+                <span className="tech-tag">FastAPI</span>
+                <span className="tech-tag">Django</span>
+                <span className="tech-tag">React</span>
+                <span className="tech-tag">Flask</span>
+                <span className="tech-tag">Streamlit</span>
+                <span className="tech-tag">TypeScript</span>
+                <span className="tech-tag">JavaScript</span>
+                <span className="tech-tag">HTML</span>
+                <span className="tech-tag">CSS</span>
               </div>
             </div>
           </div>
