@@ -24,7 +24,7 @@ const projects: Project[] = [
   {
     id: 2,
     title: 'LLM Integration into HR-Tech Platform',
-    category: 'Product',
+    category: 'Enterprise AI',
     description: 'End-to-end LLM integration into an HR-tech platform for people engagement, continuous feedback, and talent development at scale.',
     technologies: ['Python','TypeScript','AWS','MongoDB','AWS Bedrock','Anthropic LLM','AWS Fargate','GitLab','Pydantic'],
   },
