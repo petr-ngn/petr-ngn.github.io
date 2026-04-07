@@ -1,79 +1,67 @@
 .footer {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  color: #ffffff;
+  background: var(--void);
+  border-top: 1px solid var(--border);
   padding: 2rem 0;
-  margin-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-content {
+.footer-inner {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
-.footer-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.copyright {
-  font-size: 0.9rem;
-  color: #a8b2d1;
-  margin: 0;
-}
-
-.entrepreneur-info,
-.registration-info {
-  font-size: 0.85rem;
-  color: #8892b0;
-  margin: 0;
+.footer-left {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.placeholder {
-  color: #8892b0;
-  font-style: italic;
-  font-weight: 500;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+.footer-mark {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--acid);
+  line-height: 1;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-  }
-  
-  .footer-section {
-    align-items: center;
-  }
-  
-  .entrepreneur-info,
-  .registration-info {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
+.footer-name {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
 }
 
-@media (max-width: 480px) {
-  .footer {
-    padding: 1.5rem 0;
+.footer-center {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-reg {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
   }
-  
-  .copyright {
-    font-size: 0.8rem;
-  }
-  
-  .entrepreneur-info,
-  .registration-info {
-    font-size: 0.8rem;
-  }
+  .footer-center { text-align: left; flex: none; }
+  .footer-right  { text-align: left; }
 }

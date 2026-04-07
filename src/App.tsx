@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,61 +11,74 @@ import Footer from './components/Footer';
 import './App.css';
 
 const App: React.FC = () => {
-  // Check if we're in a browser (not during pre-rendering)
-  const isBrowser = typeof window !== 'undefined' && 
-    window.navigator && 
-    window.navigator.userAgent && 
+  const isBrowser = typeof window !== 'undefined' &&
+    window.navigator &&
     !window.navigator.userAgent.includes('HeadlessChrome');
-  
-  // Start with no loading screen to avoid hydration mismatches
-  // Only show loading screen in actual browser, not during pre-rendering
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    // Only show loading screen in actual browser
-    if (!isBrowser) {
-      return;
-    }
-    
-    // Show loading screen briefly
+    if (!isBrowser) return;
     setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
+    const timer = setTimeout(() => setIsLoading(false), 1100);
     return () => clearTimeout(timer);
   }, [isBrowser]);
 
-  if (isLoading) {
-    return (
-      <div className="loading-screen">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="loading-content"
-        >
-          <h2>Petr Nguyen</h2>
-          <p>AI & ML Engineer</p>
-          <div className="loading-spinner"></div>
-        </motion.div>
-      </div>
-    );
-  }
-
   return (
-    <div className="App">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            className="loading-screen"
+            key="loader"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="loading-inner">
+              <motion.div
+                className="loading-monogram"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                P<span>N</span>
+              </motion.div>
+              <motion.p
+                className="loading-label"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                Full-stack AI &amp; ML Developer
+              </motion.p>
+              <motion.div
+                className="loading-bar-track"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="loading-bar-fill" />
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {!isLoading && (
+        <div className="App">
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Education />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 

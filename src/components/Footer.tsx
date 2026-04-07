@@ -1,33 +1,26 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import './Footer.css';
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="footer">
       <div className="container">
-        <motion.div
-          className="footer-content"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="footer-section">
-            <p className="copyright">
-              © {currentYear} Petr Nguyen
-            </p>
+        <div className="footer-inner">
+          <div className="footer-left">
+            <span className="footer-mark">PN</span>
+            <span className="footer-name">Petr Nguyen</span>
           </div>
-          
-          <div className="footer-section">
-            <p className="entrepreneur-info">
-            Entrepreneur Identification Code: <span className="placeholder">23238488</span>
-            (The subject is also registered as a VAT payer)
-            </p>
+          <div className="footer-center">
+            <span className="footer-reg">
+              IČO (Entrepreneur Identification Code): 23238488 · VAT registered
+            </span>
           </div>
-        </motion.div>
+          <div className="footer-right">
+            <span className="footer-copy">© {year}</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -1,227 +1,138 @@
 .about {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
 }
 
-.section-header {
-  text-align: center;
+.about::before {
+  content: 'ABOUT';
+  position: absolute;
+  top: 50%;
+  right: -3rem;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: var(--font-display);
+  font-size: 10rem;
+  color: rgba(0, 150, 255, 0.025);
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.about-header {
   margin-bottom: 4rem;
 }
 
-.section-header h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #004f90, #0066cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.section-header p {
-  font-size: 1.1rem;
-  color: #888;
-}
-
-.about-text {
-  margin-bottom: 4rem;
-}
-
-.about-text h3 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: white;
-}
-
-.about-text p {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #ccc;
-  margin-bottom: 1.5rem;
-}
-
-.about-stats {
+/* ── Bio + Capabilities grid ── */
+.about-top {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  margin-bottom: 5rem;
+  align-items: start;
 }
 
-.stat {
-  text-align: center;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+.about-bio p {
+  font-size: 1rem;
+  color: var(--ice-60);
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
 }
 
-.stat-number {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #004f90;
-  margin-bottom: 0.5rem;
-}
+.about-bio p:last-child { margin-bottom: 0; }
 
-.stat-label {
-  font-size: 0.9rem;
-  color: #888;
+.about-bio strong {
+  color: var(--ice);
   font-weight: 500;
 }
 
-.about-skills h3 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  color: white;
-}
-
-.skills-grid {
+/* ── Capability cards ── */
+.about-caps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
 }
 
-.skill-card {
+.cap-card {
+  background: var(--surface-2);
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  text-align: center;
+  transition: background 0.2s;
 }
 
-.skill-card:hover {
-  background: rgba(0, 79, 144, 0.1);
-  border-color: rgba(0, 79, 144, 0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 79, 144, 0.2);
+.cap-card:hover { background: var(--surface-3); }
+
+.cap-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--acid);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
 }
 
-.skill-icon {
-  font-size: 2.5rem;
-  color: #004f90;
-  margin-bottom: 1rem;
-}
-
-.skill-card h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
+.cap-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--acid);
   margin-bottom: 0.5rem;
-  color: white;
+  text-transform: uppercase;
 }
 
-.skill-card p {
-  font-size: 0.9rem;
-  color: #ccc;
-  line-height: 1.5;
+.cap-desc {
+  font-size: 0.8rem;
+  color: var(--ice-60);
+  line-height: 1.65;
+  font-weight: 300;
 }
 
-.about-languages {
-  margin-top: 4rem;
+/* ── Tech stack ── */
+.about-stack {
+  border-top: 1px solid var(--border);
+  padding-top: 3.5rem;
 }
 
-.about-languages h3 {
-  font-size: 1.8rem;
-  font-weight: 600;
+.about-stack-heading {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
   margin-bottom: 2rem;
-  color: white;
-  text-align: center;
 }
 
-.languages-grid {
+.stack-groups {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.5rem;
 }
 
-.language-category {
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+.stack-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 0.75rem;
 }
 
-.language-category h4 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: white;
-  text-align: center;
-}
-
-.tech-tags {
+.stack-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  justify-content: center;
+  gap: 0.4rem;
 }
 
-.tech-tag {
-  padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #004f90, #0066cc);
-  color: white;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about-top { grid-template-columns: 1fr; gap: 3rem; }
 }
 
-.tech-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 79, 144, 0.3);
-}
-
-/* Responsive design */
-
-@media (max-width: 768px) {
-  .about {
-    padding: 80px 0;
-  }
-
-  .section-header h2 {
-    font-size: 2rem;
-  }
-
-  .about-text h3,
-  .about-skills h3,
-  .about-languages h3 {
-    font-size: 1.5rem;
-  }
-
-  .about-stats {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .languages-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tech-tags {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-header h2 {
-    font-size: 1.8rem;
-  }
-
-  .about-text p {
-    font-size: 0.95rem;
-  }
-
-  .skill-card {
-    padding: 1.2rem;
-  }
-
-  .language-category {
-    padding: 1.5rem;
-  }
+@media (max-width: 540px) {
+  .about-caps   { grid-template-columns: 1fr; }
+  .stack-groups { grid-template-columns: 1fr; }
 }

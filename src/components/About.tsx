@@ -1,210 +1,114 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaPython, FaCloud, FaBrain, FaCode, FaDatabase, FaRocket } from 'react-icons/fa';
 import './About.css';
 
-interface Skill {
-  icon: React.ReactElement;
-  title: string;
-  description: string;
-}
+const skillGroups = [
+  {
+    label: 'AI & Machine Learning',
+    items: ['Scikit-learn', 'PyTorch', 'TensorFlow', 'HuggingFace', 'OpenAI', 'AWS Bedrock',
+            'AWS SageMaker', 'LangChain', 'LangGraph', 'LangSmith', 'Optuna', 'SHAP', 'Pydantic'],
+  },
+  {
+    label: 'Cloud & DevOps',
+    items: ['AWS', 'Azure', 'Docker', 'Terraform', 'Jenkins', 'GitLab CI/CD',
+            'GitHub Actions', 'Azure DevOps', 'Linux', 'Bash'],
+  },
+  {
+    label: 'Web Development',
+    items: ['FastAPI', 'Django', 'Flask', 'Streamlit', 'React', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
+  },
+  {
+    label: 'Languages & Data',
+    items: ['Python', 'TypeScript', 'JavaScript', 'R', 'SQL', 'Polars', 'PostgreSQL', 'MongoDB', 'Redis', 'Databricks'],
+  },
+];
 
-const About: React.FC = () => {
-  const skills: Skill[] = [
-    {
-      icon: <FaPython />,
-      title: 'Python Development',
-      description: 'Expert in Python programming, backend development, data science, and ML libraries'
-    },
-    {
-      icon: <FaBrain />,
-      title: 'AI & Machine Learning',
-      description: 'Deep learning, predictive modeling, model tuning and deployment, MLOps, and LLM applications'
-    },
-    {
-      icon: <FaCloud />,
-      title: 'Cloud Computing',
-      description: 'AWS, Azure, Docker, and serverless deployment'
-    },
-    {
-      icon: <FaCode />,
-      title: 'Web Development',
-      description: 'Full-stack development with modern frameworks'
-    },
-    {
-      icon: <FaDatabase />,
-      title: 'Data Engineering',
-      description: 'Data processing, pipelines, and database management'
-    },
-    {
-      icon: <FaRocket />,
-      title: 'DevOps & CI/CD',
-      description: 'Automated deployment and infrastructure management via CI/CD pipelines & Terraform'
-    }
-  ];
+const coreCaps = [
+  { title: 'AI Engineering', desc: 'Chatbots, RAG, RAG systems, Multi-agent Orchestration, MCP server development.' },
+  { title: 'ML Engineering', desc: 'Predictive Modelling, Deep Learning, NLP, Computer Vision, OCR.' },
+  { title: 'Cloud & DevOps', desc: 'AWS, Azure, Terraform IaC, CI/CD pipelines, Unit and Integration Testing, Containerization, Shell Scripting' },
+  { title: 'Full-Stack Dev',  desc: 'Python backends (FastAPI/Django), React frontends, REST APIs, database design.' },
+  { title: 'Data Engineering', desc: 'ETL Pipelines, Polars/SQL, AWS Glue, Databricks.' },
+  { title: 'Mentoring',        desc: 'Leading Junior ML engineers; Coaching Data Science, AI & Python at Czechitas.' },
+];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+const inView = {
+  hidden: { opacity: 0, y: 24 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.19, 1, 0.22, 1] } },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
+const About: React.FC = () => (
+  <section id="about" className="about">
+    <div className="container">
 
-  return (
-    <section id="about" className="about">
-      <div className="container">
+      {/* Header */}
+      <motion.div
+        className="about-header"
+        initial="hidden" whileInView="show" variants={inView} viewport={{ once: true }}
+      >
+        <p className="section-eyebrow">About</p>
+        <h2 className="section-title">WHO I AM</h2>
+        <div className="section-divider" />
+      </motion.div>
+
+      {/* Bio + capabilities grid */}
+      <div className="about-top">
         <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          className="about-bio"
+          initial="hidden" whileInView="show" variants={inView} viewport={{ once: true }}
         >
-          <h2>About Me</h2>
-          <p>Get to know me better</p>
-        </motion.div>
-
-        <motion.div
-          className="about-text"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3>Who I Am</h3>
           <p>
-            I'm an experienced full-stack AI Developer / ML Engineer / Python Developer / DevOps Specialist / Data Scientist 
-            with diverse experience across industries including banking, Big 4 consulting, 
-            start-up, and non-profit sector. Currently, I work as a Data Scientist / Gen AI 
-            Developer at BigHub, helping enterprises leverage AI for a data-driven edge.
+            I'm a Full Stack AI &amp; ML Developer with diverse experience across finance,
+            Big&nbsp;4 consulting, start-up, and non-profit. Currently working as an idependent
+            <strong> Data Scientist / GenAI Developer for BigHub</strong> and as an
+            <strong> AI Engineer &amp; Architect Consultant for LutherOne</strong>.
           </p>
-          
           <p>
-            I also serve as an AI Engineer & Architect Consultant at HR-tech start-up LutherOne, where I 
-            provide AI expertise to design end-to-end AI-based systems and integrate LLM features into products. My 
-            excellence lies in Python programming, predictive modelling, deep learning, 
-            cloud deployment, devOps, machine learning, web app development and AI.
-          </p>
-
-          <p>
-            I'm currently finishing my 2nd Master's degree in Data & AI and work at a 
-            non-profit IT organization as a Data Science and Python Mentor.
+            My work covers the entiner lifecycle — from data pipelines and model training to
+            ML/LLM orchestration, CI/CD pipelines, cloud deployment, and production-ready integration. I'm finishing my
+            2nd Master's degree in Data &amp; AI, and volunteer as a AI / Python &amp; Data Science
+            mentor at Czechitas.
           </p>
         </motion.div>
 
         <motion.div
-          className="about-skills"
-          variants={containerVariants}
+          className="about-caps"
           initial="hidden"
-          whileInView="visible"
+          whileInView="show"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } } }}
           viewport={{ once: true }}
         >
-          <h3>Core Expertise</h3>
-          <div className="skills-grid">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="skill-card"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
-              >
-                <div className="skill-icon">
-                  {skill.icon}
-                </div>
-                <h4>{skill.title}</h4>
-                <p>{skill.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="about-languages"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3>Languages & Technologies</h3>
-          <div className="languages-grid">
-            <div className="language-category">
-              <h4>Programming Languages</h4>
-              <div className="tech-tags">
-                <span className="tech-tag">Python</span>
-                <span className="tech-tag">TypeScript</span>
-                <span className="tech-tag">JavaScript</span>
-                <span className="tech-tag">R</span>
-                <span className="tech-tag">SQL</span>
-                <span className="tech-tag">Bash</span>
-              </div>
-            </div>
-            
-            <div className="language-category">
-              <h4>Cloud & DevOps</h4>
-              <div className="tech-tags">
-                <span className="tech-tag">AWS</span>
-                <span className="tech-tag">Azure</span>
-                <span className="tech-tag">Docker</span>
-                <span className="tech-tag">Linux</span>
-                <span className="tech-tag">Terraform</span>
-                <span className="tech-tag">Jenkins</span>
-                <span className="tech-tag">GitLab CI/CD</span>
-                <span className="tech-tag">GitHub Actions</span>
-                <span className="tech-tag">Azure DevOps</span>
-              </div>
-            </div>
-            
-            <div className="language-category">
-              <h4>AI & ML</h4>
-              <div className="tech-tags">
-                <span className="tech-tag">Scikit-learn</span>
-                <span className="tech-tag">Optuna</span>
-                <span className="tech-tag">HuggingFace</span>
-                <span className="tech-tag">TensorFlow</span>
-                <span className="tech-tag">PyTorch</span>
-                <span className="tech-tag">OpenAI</span>
-                <span className="tech-tag">AWS Bedrock</span>
-                <span className="tech-tag">AWS SageMaker</span>
-                <span className="tech-tag">LangChain</span>
-                <span className="tech-tag">LangGraph</span>
-                <span className="tech-tag">LangSmith</span>
-                <span className="tech-tag">Pydantic</span>
-              </div>
-            </div>
-
-            <div className="language-category">
-              <h4>Web Development</h4>
-              <div className="tech-tags">
-                <span className="tech-tag">FastAPI</span>
-                <span className="tech-tag">Django</span>
-                <span className="tech-tag">React</span>
-                <span className="tech-tag">Flask</span>
-                <span className="tech-tag">Streamlit</span>
-                <span className="tech-tag">TypeScript</span>
-                <span className="tech-tag">JavaScript</span>
-                <span className="tech-tag">HTML</span>
-                <span className="tech-tag">CSS</span>
-              </div>
-            </div>
-          </div>
+          {coreCaps.map(cap => (
+            <motion.div key={cap.title} className="cap-card" variants={inView}>
+              <h4 className="cap-title">{cap.title}</h4>
+              <p className="cap-desc">{cap.desc}</p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
-    </section>
-  );
-};
+
+      {/* Tech stack */}
+      <motion.div
+        className="about-stack"
+        initial="hidden" whileInView="show" variants={inView} viewport={{ once: true }}
+      >
+        <h3 className="about-stack-heading">Tech Stack</h3>
+        <div className="stack-groups">
+          {skillGroups.map(group => (
+            <div key={group.label} className="stack-group">
+              <p className="stack-group-label">{group.label}</p>
+              <div className="stack-tags">
+                {group.items.map(item => (
+                  <span key={item} className="tag">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+    </div>
+  </section>
+);
 
 export default About;

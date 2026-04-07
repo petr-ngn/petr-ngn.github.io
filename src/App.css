@@ -1,88 +1,68 @@
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background-color: var(--void);
 }
 
-/* Loading Screen */
+main {
+  padding-top: var(--nav-h);
+}
+
+/* ── Loading Screen ── */
 .loading-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  inset: 0;
+  background: var(--void);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.loading-content {
+.loading-inner {
   text-align: center;
-  color: white;
 }
 
-.loading-content h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #004f90, #0066cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.loading-monogram {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  color: var(--ice);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
 }
 
-.loading-content p {
-  font-size: 1.2rem;
-  color: #888;
-  margin-bottom: 2rem;
+.loading-monogram span {
+  color: var(--acid);
 }
 
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(0, 79, 144, 0.3);
-  border-top: 3px solid #004f90;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.loading-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+
+.loading-bar-track {
+  width: 160px;
+  height: 1px;
+  background: var(--muted-2);
   margin: 0 auto;
+  overflow: hidden;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.loading-bar-fill {
+  height: 100%;
+  background: var(--acid);
+  animation: loadFill 0.9s var(--ease-expo) forwards;
 }
 
-/* Main content */
-main {
-  padding-top: 80px; /* Account for fixed navbar */
+@keyframes loadFill {
+  from { width: 0; }
+  to   { width: 100%; }
 }
 
-/* Section animations */
-section {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .loading-content h2 {
-    font-size: 2rem;
-  }
-  
-  .loading-content p {
-    font-size: 1rem;
-  }
-  
-  main {
-    padding-top: 70px;
-  }
+@media (max-width: 600px) {
+  main { padding-top: 60px; }
 }

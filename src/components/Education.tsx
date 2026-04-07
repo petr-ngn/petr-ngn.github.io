@@ -1,161 +1,130 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaCalendarAlt, FaTrophy } from 'react-icons/fa';
 import './Education.css';
 
-interface EducationItem {
+interface EduItem {
   degree: string;
   institution: string;
   period: string;
-  description: string[];
+  details: string[];
   honors?: string[];
+  exchange?: boolean;
 }
 
-const Education: React.FC = () => {
-  const education: EducationItem[] = [
-    {
-      degree: 'Master\'s in Data and Analytics for Business',
-      institution: 'Faculty of Informatics and Statistics, Prague University of Economics and Business',
-      period: '2022 - present',
-      description: [
-        'Thesis: Deployment of LLM-based Applications in AWS (in progress)',
-        'Coursework: Cloud Computing, Python Programming, Agile ML Development, Cloud BI, Data Architectures, SSBI',
-        'Extracurricular Activity: Data and Business Alumni Club'
-      ],
-      honors: [
-        '3rd place in Data Challenge 2023',
-        'Scholarship for exceptional academic results'
-      ]
-    },
-    {
-      degree: 'Master\'s in Banking and Insurance',
-      institution: 'Faculty of Finance and Accounting, Prague University of Economics and Business',
-      period: '2020 - 2023',
-      description: [
-        'Thesis: Application of Machine Learning Models within Credit Risk Modelling',
-        'Minor Specialization: Data Engineering',
-        'Coursework: Time Series Modelling, Risk Management, Monetary Economics, Asset Management, Business Intelligence, Database Systems, Data Mining',
-        'Extracurricular Activity: Prague Banking Club'
-      ],
-      honors: [
-        'Award for an excellent Master\'s thesis (ESOP)',
-        'TOP 25 of Werner von Siemens Award',
-        '2nd place at Atlas Copco Services Award',
-        'Scholarship for exceptional academic results'
-      ]
-    },
-    {
-      degree: 'Master\'s Erasmus+ Exchange',
-      institution: 'Faculty of Business and Economics, University of Antwerp',
-      period: '2021 - 2022',
-      description: [
-        'Coursework: Data Science, Econometrics, Financial Engineering',
-        'Extracurricular Activity: AXA Data Science Challenge 2021'
-      ]
-    },
-    {
-      degree: 'Bachelor\'s in Banking and Insurance',
-      institution: 'Faculty of Finance and Accounting, Prague University of Economics and Business',
-      period: '2017 - 2020',
-      description: [
-        'Thesis: Bank Guarantees and Documentary Letters of Credit',
-        'Coursework: Financial Mathematics, Insurance Mathematics, Statistics, Econometrics, Financial Analysis, Accounting, Capital Markets, Taxes, Corporate Finance, Banking'
-      ]
-    }
-  ];
+const education: EduItem[] = [
+  {
+    degree: "Master's in Data and Analytics for Business",
+    institution: 'Prague University of Economics and Business — Faculty of Informatics and Statistics',
+    period: '2022 — present',
+    details: [
+      'Thesis: Deployment of LLM-based Applications in AWS (in progress)',
+      'Coursework: Cloud Computing, Python Programming, Agile ML Development, Cloud BI, Data Architectures',
+      'Extracurricular: Data and Business Alumni Club',
+    ],
+    honors: [
+      '3rd place — Data Challenge 2023',
+      'Scholarship for exceptional academic results',
+    ],
+  },
+  {
+    degree: "Master's in Banking and Insurance",
+    institution: 'Prague University of Economics and Business — Faculty of Finance and Accounting',
+    period: '2020 — 2023',
+    details: [
+      'Thesis: Application of Machine Learning Models within Credit Risk Modelling',
+      'Minor Specialisation: Data Engineering',
+      'Coursework: Time Series Modelling, Risk Management, Monetary Economics, Data Mining, Business Intelligence',
+      'Extracurricular: Prague Banking Club',
+    ],
+    honors: [
+      'Award for Excellent Master\'s Thesis (ESOP)',
+      'TOP 25 — Werner von Siemens Award',
+      '2nd place — Atlas Copco Services Award',
+      'Scholarship for exceptional academic results',
+    ],
+  },
+  {
+    degree: "Master's Erasmus+ Exchange",
+    institution: 'University of Antwerp — Faculty of Business and Economics',
+    period: '2021 — 2022',
+    exchange: true,
+    details: [
+      'Coursework: Data Science, Econometrics, Financial Engineering',
+      'Extracurricular: AXA Data Science Challenge 2021',
+    ],
+  },
+  {
+    degree: "Bachelor's in Banking and Insurance",
+    institution: 'Prague University of Economics and Business — Faculty of Finance and Accounting',
+    period: '2017 — 2020',
+    details: [
+      'Thesis: Bank Guarantees and Documentary Letters of Credit',
+      'Coursework: Financial Mathematics, Insurance Mathematics, Statistics, Econometrics, Financial Analysis, Capital Markets, Banking',
+    ],
+  },
+];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+const inView = {
+  hidden: { opacity: 0, y: 24 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.19, 1, 0.22, 1] } },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
+const Education: React.FC = () => (
+  <section id="education" className="education">
+    <div className="container">
 
-  return (
-    <section id="education" className="education">
-      <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2>Education</h2>
-          <p>My academic background</p>
-        </motion.div>
+      <motion.div
+        className="edu-header"
+        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }} viewport={{ once: true }}
+      >
+        <p className="section-eyebrow">Education</p>
+        <h2 className="section-title">ACADEMIC RECORD</h2>
+        <div className="section-divider" />
+      </motion.div>
 
-        <motion.div
-          className="education-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {education.map((edu, index) => (
-            <motion.div
-              key={index}
-              className="education-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-            >
-              <div className="education-header">
-                <div className="education-icon">
-                  <FaGraduationCap />
-                </div>
-                <div className="education-info">
-                  <h3>{edu.degree}</h3>
-                  <div className="education-institution">
-                    <span>{edu.institution}</span>
-                  </div>
-                  <div className="education-period">
-                    <FaCalendarAlt className="icon" />
-                    <span>{edu.period}</span>
-                  </div>
-                </div>
-              </div>
+      <motion.div
+        className="edu-grid"
+        initial="hidden"
+        whileInView="show"
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+        viewport={{ once: true, margin: '-60px' }}
+      >
+        {education.map((edu, i) => (
+          <motion.article key={i} className="edu-card" variants={inView}>
+            <div className="edu-card-top">
+              <span className="edu-period">{edu.period}</span>
+              {edu.exchange && <span className="edu-exchange-badge">Erasmus+</span>}
+            </div>
 
-              <div className="education-content">
-                <ul className="education-description">
-                  {edu.description.map((desc, descIndex) => (
-                    <li key={descIndex}>{desc}</li>
+            <h3 className="edu-degree">{edu.degree}</h3>
+            <p className="edu-institution">{edu.institution}</p>
+
+            <ul className="edu-details">
+              {edu.details.map((d, j) => (
+                <li key={j}>{d}</li>
+              ))}
+            </ul>
+
+            {edu.honors && edu.honors.length > 0 && (
+              <div className="edu-honors">
+                <p className="edu-honors-label">Honours &amp; Awards</p>
+                <ul className="edu-honors-list">
+                  {edu.honors.map((h, j) => (
+                    <li key={j}>
+                      <span className="edu-honor-icon">◆</span>
+                      {h}
+                    </li>
                   ))}
                 </ul>
-
-                {edu.honors && edu.honors.length > 0 && (
-                  <div className="education-honors">
-                    <div className="honors-header">
-                      <FaTrophy className="icon" />
-                      <span>Honours & Awards</span>
-                    </div>
-                    <ul className="honors-list">
-                      {edu.honors.map((honor, honorIndex) => (
-                        <li key={honorIndex}>{honor}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+            )}
+          </motion.article>
+        ))}
+      </motion.div>
+
+    </div>
+  </section>
+);
 
 export default Education;

@@ -1,195 +1,165 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBuilding, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import './Experience.css';
 
-interface ExperienceItem {
+interface ExpItem {
   title: string;
   company: string;
   location: string;
   period: string;
   type: string;
-  description: string[];
-  tools: string;
+  description: string;
+  tools: string[];
 }
 
+const experiences: ExpItem[] = [
+  {
+    title: 'Data Scientist | GenAI Developer',
+    company: 'BigHub',
+    location: 'Prague, CZ',
+    period: '05/2025 — present',
+    type: 'Contractor',
+    description: 'Delivering end-to-end AI solutions, ML predictive modelling systems, OCR engines, and multi-agent orchestrated platforms. MCP server development. Overseeing MLOps, DevOps, CI/CD pipelines, cloud infrastructure, and presales PoCs.',
+    tools: ['Python','FastAPI','Azure','OpenAI','Terraform','FastMCP','Azure Container Apps','Azure Functions','Azure App Services','GitLab','Azure Document Intelligence','Azure AI Vision','OpenAI Apps SDK','Jenkins'],
+  },
+  {
+    title: 'AI Engineer & Architect Consultant',
+    company: 'LutherOne',
+    location: 'Prague, CZ',
+    period: '07/2025 — present',
+    type: 'Contractor',
+    description: 'Consultancy and AI expertise to an HR-tech B2B start-up: LLM deployment and product integration, AI task automation, RAG systems, AI agents, and wider Data Science support.',
+    tools: ['Python','TypeScript','Terraform','Redis','LangGraph','LangChain','LangSmith','AWS','AWS Bedrock','Docker','Linux','Bash','GitLab','Amazon EC2','Amazon Comprehend','AWS Lambda','MongoDB'],
+  },
+  {
+    title: 'AI & Data Science Mentor/Coach',
+    company: 'Czechitas',
+    location: 'Prague, CZ',
+    period: '05/2025 — present',
+    type: 'Volunteer',
+    description: 'Volunteering at a non-profit organisation helping women enter IT. Mentoring students in the Digital Academy and coaching AI, Python programming, and Data Science.',
+    tools: ['Python','SQL'],
+  },
+  {
+    title: 'Lead AI & ML Engineer',
+    company: 'LutherOne',
+    location: 'Prague, CZ',
+    period: '01/2024 — 06/2025',
+    type: 'Full-time',
+    description: 'Senior lead of the AI/ML team — responsible for LLM product integration, AI process automation, mentoring two junior engineers, overseeing attrition modelling, and partial backend microservices development.',
+    tools: ['Python','TypeScript','MongoDB','Bash','Docker','Linux','AWS EC2','AWS SageMaker','AWS Lambda','AWS ECR','AWS Glue','GitLab','AWS Step Functions','AWS Comprehend','AWS Bedrock','AWS Cognito','AWS EventBridge','AWS RDS'],
+  },
+  {
+    title: 'Machine Learning Engineer',
+    company: 'LutherOne',
+    location: 'Prague, CZ',
+    period: '07/2023 — 12/2023',
+    type: 'Full-time',
+    description: 'ML engineering for attrition modelling, NLP, web application development, and data processing pipeline deployment.',
+    tools: ['Python','Bash','Docker','Linux','AWS EC2','AWS SageMaker','AWS Bedrock','AWS Lambda','AWS ECR','AWS Glue','GitLab'],
+  },
+  {
+    title: 'Data Scientist',
+    company: 'Ernst & Young (EY)',
+    location: 'Prague, CZ',
+    period: '07/2023 — 12/2023',
+    type: 'Part-time',
+    description: 'Advanced analytics at a Big 4 consultancy — ML solutions for electromobility and the energy sector, including energy consumption forecasting and EV utilisation synthetic data generation.',
+    tools: ['Python','Docker','Streamlit','JavaScript','HTML','CSS','Power BI'],
+  },
+  {
+    title: 'Full Stack Developer',
+    company: 'Česko.Digital',
+    location: 'Prague, CZ',
+    period: '04/2023 — 08/2023',
+    type: 'Volunteer',
+    description: 'Built a custom algorithm and web application for volunteer skill matching at a Czech non-profit IT organisation — 3rd place in Data Challenge 2023.',
+    tools: ['Python','Flask','Docker','GitHub Actions','AWS Lambda','JavaScript','HTML','CSS','Keboola','SQL'],
+  },
+  {
+    title: 'Data Science & Financial Risk Modeller',
+    company: 'PricewaterhouseCoopers (PwC)',
+    location: 'Prague, CZ',
+    period: '03/2022 — 06/2023',
+    type: 'Part-time',
+    description: 'Quantitative modelling at a Big 4 consultancy — credit risk model validation, back-testing, statistical modelling, audit support, and ML R&D.',
+    tools: ['Python','R','SQL','Azure ML'],
+  },
+];
+
+const badgeColor: Record<string, string> = {
+  'Contractor': 'badge--acid',
+  'Full-time':  'badge--coral',
+  'Volunteer':  'badge--muted',
+  'Part-time':  'badge--outline',
+};
+
+const inView = {
+  hidden: { opacity: 0, x: -20 },
+  show:   { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.19, 1, 0.22, 1] } },
+};
+
 const Experience: React.FC = () => {
-  const experiences: ExperienceItem[] = [
-    {
-      title: 'Data Scientist | GenAI Developer',
-      company: 'BigHub',
-      location: 'Prague, Czech Republic',
-      period: '05/2025 - present',
-      type: 'Contractor',
-      description: [
-        'Helping business to develop custom and deliver end-to-end AI solutions, ML predictive modelling systems, OCR engines, Multi-agent orchestrated platforms, MCP server development. Overseeing MLOps, DevOps, including CI/CD pipelines and cloud infrastructure, and presales activities with PoC\'s building for clients.'
-      ],
-      tools: 'Python, FastAPI, Azure, OpenAI, Terraform, FastMCP, Azure Container Apps, API Gateway, Azure Functions, Azure App Services, GitLab, Azure Document Intelligence, Azure AI Vision, OpenAI Apps SDK, Jenkins'
-    },
-    {
-      title: 'AI Engineer & Architect Consultant',
-      company: 'LutherOne',
-      location: 'Prague, Czech Republic',
-      period: '07/2025 - present',
-      type: 'Contractor',
-      description: [
-        'Providing consultancy services and AI expertise to a HR-tech B2B start-up, including LLM deployment and integration into a platform product, AI tasks automation, RAG systems, AI agents, and other AI/ML support for a Data Science team.'
-      ],
-      tools: 'Python, TypeScript, Terraform, Redis, LangGraph, LangChain, LangSmith, AWS, AWS Bedrock, CI/CD, Docker, Linux, Bash, GitLab, Amazon EC2, Amazon Comprehend, AWS Lambda, MongoDB'
-    },
-    {
-      title: 'AI & Data Science Mentor/Coach',
-      company: 'Czechitas',
-      location: 'Prague, Czech Republic',
-      period: '05/2025 - present',
-      type: 'Volunteer',
-      description: [
-        'Volunteering at a non-profit organization helping women to enter the IT world. Mentoring 2 students in Digital Academy and consulting their project. Coaching classes in AI, Python programming and Data Science.'
-      ],
-      tools: 'Python, SQL'
-    },
-    {
-      title: 'Lead AI & ML Engineer',
-      company: 'LutherOne',
-      location: 'Prague, Czech Republic',
-      period: '01/2024 - 06/2025',
-      type: 'Full-time',
-      description: [
-        'Senior lead of AI and ML team at a HR-tech B2B start-up, responsible for delivery of LLM integration into the product, AI automation of processes, mentoring two junior ML engineers and data scientists, overseeing attrition modelling development, partial development of the backend microservices.'
-      ],
-      tools: 'Python, TypeScript, MongoDB, Bash, Docker, Linux, AWS EC2, AWS SageMaker, AWS Lambda, AWS ECR, AWS Glue, GitLab, AWS Step Functions, AWS Comprehend, AWS Bedrock, AWS Cognito, AWS EventBridge, AWS RDS'
-    },
-    {
-      title: 'Machine Learning Engineer',
-      company: 'LutherOne',
-      location: 'Prague, Czech Republic',
-      period: '07/2023 - 12/2023',
-      type: 'Full-time',
-      description: [
-        'ML engineering at a HR-tech B2B start-up with a responsiblity for attrition modelling, natural language processing, web application development, data processing pipelines development and deployment.'
-      ],
-      tools: 'Python, Bash, Docker, Linux, AWS EC2, AWS SageMaker, AWS Bedrock, AWS Lambda, AWS ECR, AWS Glue, GitLab'
-    },
-    {
-      title: 'Data Scientist',
-      company: 'Ernst & Young (EY)',
-      location: 'Prague, Czech Republic',
-      period: '07/2023 - 12/2023',
-      type: 'Part-time',
-      description: [
-        'Advanced analytics at one of the Big 4 consultancy companies, development of ML solutions in electromobility and energy sector, including energy consumption forecasting or heuristic algorithm for synthetic generation of EV utilization.'
-      ],
-      tools: 'Python, Docker, Streamlit, JavaScript, HTML, CSS, Power BI'
-    },
-    {
-      title: 'Full Stack Developer',
-      company: 'Česko.Digital',
-      location: 'Prague, Czech Republic',
-      period: '04/2023 - 08/2023',
-      type: 'Volunteer',
-      description: [
-        'Development of a custom algorithm and web application for skills matching of volunteers for project engagement at Czech non-profit IT organization (3rd place in Data Challenge 2023).'
-      ],
-      tools: 'Python, Flask, Docker, GitHub Actions, AWS Lambda, JavaScript, HTML, CSS, Keboola, SQL'
-    },
-    {
-      title: 'Data Science & Financial Risk Modeller',
-      company: 'PricewaterhouseCoopers (PwC)',
-      location: 'Prague, Czech Republic',
-      period: '03/2022 - 06/2023',
-      type: 'Part-time',
-      description: [
-        'Quantitave modelling at one of the Big 4 consultancy companies providing services in the field of credit risk modelling, including validation and back-testing of credit risk models, statistical modelling, audit support, ML research and development.'
-      ],
-      tools: 'Python, R, SQL, Azure ML'
-    }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
-
   return (
     <section id="experience" className="experience">
       <div className="container">
+
         <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          className="exp-header"
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }} viewport={{ once: true }}
         >
-          <h2>Experience</h2>
-          <p>My professional journey</p>
+          <p className="section-eyebrow">Experience</p>
+          <h2 className="section-title">WORK HISTORY</h2>
+          <div className="section-divider" />
         </motion.div>
 
         <motion.div
-          className="experience-timeline"
-          variants={containerVariants}
+          className="exp-timeline"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          whileInView="show"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+          viewport={{ once: true, margin: '-80px' }}
         >
-          {experiences.map((exp, index) => (
+          {experiences.map((exp, i) => (
             <motion.div
-              key={index}
-              className="experience-item"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
+              key={i}
+              className="exp-item exp-item--open"
+              variants={inView}
             >
-              <div className="experience-header">
-                <div className="experience-title">
-                  <h3>{exp.title}</h3>
-                  <div className="experience-company">
-                    <FaBuilding className="icon" />
-                    <span>{exp.company}</span>
-                  </div>
-                </div>
-                <div className="experience-meta">
-                  <div className="experience-location">
-                    <FaMapMarkerAlt className="icon" />
-                    <span>{exp.location}</span>
-                  </div>
-                  <div className="experience-period">
-                    <FaCalendarAlt className="icon" />
-                    <span>{exp.period}</span>
-                  </div>
-                  <div className="experience-type">
-                    <span className="type-badge">{exp.type}</span>
-                  </div>
-                </div>
+              {/* Timeline dot */}
+              <div className="exp-dot">
+                <span className="exp-dot-inner" />
               </div>
-              
-              <div className="experience-content">
-                <ul className="experience-description">
-                  {exp.description.map((desc, descIndex) => (
-                    <li key={descIndex}>{desc}</li>
-                  ))}
-                </ul>
-                <div className="experience-tools">
-                  <strong>Tools:</strong> {exp.tools}
+
+              {/* Content */}
+              <div className="exp-content">
+                <div className="exp-top">
+                  <div className="exp-meta-left">
+                    <span className={`exp-badge ${badgeColor[exp.type] ?? 'badge--outline'}`}>
+                      {exp.type}
+                    </span>
+                    <span className="exp-period">{exp.period}</span>
+                    <span className="exp-loc">{exp.location}</span>
+                  </div>
+                </div>
+
+                <h3 className="exp-title">{exp.title}</h3>
+                <p className="exp-company">{exp.company}</p>
+
+                <div className="exp-body">
+                  <p className="exp-desc">{exp.description}</p>
+                  <div className="exp-tools">
+                    {exp.tools.map(t => (
+                      <span key={t} className="tag">{t}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );

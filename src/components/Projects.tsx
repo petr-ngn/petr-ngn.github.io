@@ -6,147 +6,167 @@ import './Projects.css';
 interface Project {
   id: number;
   title: string;
+  category: string;
   description: string;
   technologies: string[];
   githubUrl?: string;
 }
 
-const Projects: React.FC = () => {
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: 'AI-Powered OCR Financial Analyzer',
-      description: 'Deepnote hackathon winning project',
-      technologies: ['AWS', 'Python', 'Deepnote', 'AWS Textract', 'AWS Bedrock', 'Anthropic LLM', 'Tavily API', 'GitHub Actions', 'Streamlit', 'AWS S3'],
-      githubUrl: 'https://github.com/petr-ngn/deepnote-hackathon',
-    },
-    {
-      id: 2,
-      title: 'LLM integration into HR-tech Product Platform',
-      description: 'Integration of LLM\'s into HR-tech platform for people engagement, feedbacks and people development.',
-      technologies: ['Python', 'TypeScript', 'AWS', 'MongoDB', 'AWS Bedrock', 'Anthropic LLM', 'AWS Fargate', 'Gitlab', 'Pydantic'],
-    },
-    {
-      id: 3,
-      title: 'OCR for Insurance Claims',
-      description: 'Extraction of information from both structured and unstructured documents within automated insurance claims procesing pipelines, including document classification, OCR/LLM based extraction and asynchronous API development.',
-      technologies: ['Python', 'FastAPI', 'Docker', 'OpenAI', 'LangGraph', 'Azure', 'OpenCV', 'Azure AI Vision', 'Azure Document Intelligence', 'Terraform', 'Jenkins', 'Azure App Services', 'Pydantic'],
-    },
-    {
-      id: 4,
-      title: 'Serverless Pipeline for Employee Comments Processing',
-      description: 'Automated and cost-friendly analysis of employee comments, deployed in AWS, which performs comments translations, sentiment analysis, and topic modelling.',
-      technologies: ['Python', 'AWS', 'HuggingFace', 'Transformers', 'AWS Bedrock', 'Anthropic LLM', 'AWS Step Functions', 'AWS SageMaker', 'AWS Lambda', 'AWS EventBridge', 'PostgreSQL', 'AWS RDS'],
-    },
-    {
-      id: 5,
-      title: 'Employee Attrition Modelling',
-      description: 'Predictive modelling of of leaving employees, with main focus and data cleaning, custom algorithms for treating missing values and feature selection, and ensemble modelling',
-      technologies: ['Python', 'Polars', 'Scikit-learn', 'PyTorch', 'SHAP', 'AWS SageMaker', 'AWS ECR', 'AWS Step Functions'],
-    },
-    {
-      id: 6,
-      title: 'Internal LLM-based Web Apps',
-      description: "Web application development for automation of internal tasks, mainly in Data Science team and Customer Success/Experience team (e.g., chatbots, data analysis, PowerPoint preparation, Excel preparation, text summarization, report generation, etc.)",
-      technologies: ['Python', 'Streamlit', 'AWS', 'Docker', 'AWS EC2', 'AWS Cognito', 'GitLab', 'Terraform', 'Poetry', 'AWS ECR', 'AWS Lambda', 'AWS Route53', 'Amazon Q', 'NGINX', 'Linux'],
-    },
-    {
-      id: 7,
-      title: 'Web Application for Skill Matching of IT Volunteers  ',
-      description: 'Web application for recruiters for finding the most suitable IT volunteers for non-profit projects based on custom algorithm for skill matching.',
-      githubUrl: 'https://github.com/petr-ngn/deepnote-hackathon',
-      technologies: ['Python', 'Flask', 'Docker', 'GitHub Actions', 'AWS Lambda', 'JavaScript', 'HTML', 'CSS', 'SQL', 'Keboola', 'Requests', 'SciPy', 'Scikit-learn'],
-    },
-  ];
+const projects: Project[] = [
+  {
+    id: 1,
+    title: 'AI-Powered OCR Financial Analyzer',
+    category: 'Hackathon Winner',
+    description: 'Deepnote hackathon winning project combining AWS Textract OCR with Anthropic LLM and Tavily search for intelligent financial document analysis.',
+    technologies: ['AWS','Python','AWS Textract','AWS Bedrock','Anthropic LLM','Tavily API','GitHub Actions','Streamlit','AWS S3'],
+    githubUrl: 'https://github.com/petr-ngn/deepnote-hackathon',
+  },
+  {
+    id: 2,
+    title: 'LLM Integration into HR-Tech Platform',
+    category: 'Product',
+    description: 'End-to-end LLM integration into an HR-tech platform for people engagement, continuous feedback, and talent development at scale.',
+    technologies: ['Python','TypeScript','AWS','MongoDB','AWS Bedrock','Anthropic LLM','AWS Fargate','GitLab','Pydantic'],
+  },
+  {
+    id: 3,
+    title: 'AI Shopping Assistant MCP Server in E-commerce',
+    category: 'Enterprise AI',
+    description: 'Development and deployment of AI-powered shopping assistant as a MCP server in e-commerce, including integration into OpenAI and Claude UI clients, and custom chatbot agent.',
+    technologies: [
+      'Python', 'TypeScript', 'React', 'FastMCP', 'FastAPI', 'Docker', 'OpenAI Apps SDK', 'Claude', 'Pydantic'],
+  },
+  {
+    id: 4,
+    title: 'OCR for Insurance Claims',
+    category: 'Enterprise AI',
+    description: 'Multi-modal extraction pipeline for structured and unstructured insurance documents — document classification, OCR/LLM-based extraction, and async API. Built on Azure AI Vision + Document Intelligence.',
+    technologies: ['Python','FastAPI','Docker','OpenAI','LangGraph','Azure','OpenCV','Azure AI Vision','Azure Document Intelligence','Terraform','Jenkins','Azure App Services','Pydantic'],
+  },
+  {
+    id: 5,
+    title: 'OCR for Automotive / Invoice Documents',
+    category: 'Enterprise AI',
+    description: 'Text and semantic extraction engine of documents within automotive industry.',
+    technologies: ['Python','FastAPI','Docker','OpenAI','LangGraph','Azure', 'OpenCV','Azure Document Intelligence','Terraform','Azure DevOps','Azure Container Apps', 'Pydantic'],
+  },
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+  {
+    id: 6,
+    title: 'Serverless Employee Comments Pipeline',
+    category: 'MLOps',
+    description: 'Automated, cost-efficient AWS serverless pipeline for multilingual employee comment analysis: translation, sentiment, and topic modelling via HuggingFace and Bedrock.',
+    technologies: ['Python','AWS','HuggingFace','Transformers','AWS Bedrock','AWS Step Functions','AWS SageMaker','AWS Lambda','AWS EventBridge','PostgreSQL','AWS RDS'],
+  },
+  {
+    id: 7,
+    title: 'Employee Attrition Modelling',
+    category: 'Predictive ML',
+    description: 'Predictive ML system for employee churn — custom algorithms for missing value treatment, feature selection, ensemble modelling, and SHAP-based explainability.',
+    technologies: ['Python','Polars','Scikit-learn','PyTorch','SHAP','AWS SageMaker','AWS ECR','AWS Step Functions'],
+  },
+  {
+    id: 8,
+    title: 'Internal LLM Web Apps Suite',
+    category: 'Internal Tools',
+    description: 'Suite of internal AI-powered web apps for Data Science and Customer Success teams — chatbots, data analysis, PowerPoint/Excel generation, summarisation, and report automation.',
+    technologies: ['Python','Streamlit','AWS','Docker','AWS EC2','AWS Cognito','GitLab','Terraform','AWS ECR','AWS Lambda','NGINX','Linux'],
+  },
+  {
+    id: 9,
+    title: 'IT Volunteer Skill Matching App',
+    category: 'Non-profit',
+    description: 'Web application for recruiters to match IT volunteers with non-profit projects using a custom cosine-similarity skill-matching algorithm. 3rd place at Data Challenge 2023.',
+    technologies: ['Python','Flask','Docker','GitHub Actions','AWS Lambda','JavaScript','HTML','CSS','SQL','Keboola','SciPy','Scikit-learn'],
+    githubUrl: 'https://github.com/petr-ngn/deepnote-hackathon',
+  },
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
-
-  return (
-    <section id="projects" className="projects">
-      <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2>Projects</h2>
-          <p>Showcasing my latest work and achievements</p>
-        </motion.div>
-
-        <motion.div
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              className="project-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-            >
-              <div className="project-header">
-                {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-link">
-                    <FaGithub />
-                  </a>
-                )}
-              </div>
-              
-              <div className="project-content">
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="project-technologies">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="projects-cta"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3>Interested in working together?</h3>
-          <p>Let's discuss how I can help bring your ideas to life</p>
-          <a href="#contact" className="cta-button">
-            Get In Touch
-          </a>
-        </motion.div>
-      </div>
-    </section>
-  );
+const inView = {
+  hidden: { opacity: 0, y: 30 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.19, 1, 0.22, 1] } },
 };
+
+const Projects: React.FC = () => (
+  <section id="projects" className="projects">
+    <div className="container">
+
+      <motion.div
+        className="projects-header"
+        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }} viewport={{ once: true }}
+      >
+        <p className="section-eyebrow">Projects</p>
+        <h2 className="section-title">SELECTED WORK</h2>
+        <div className="section-divider" />
+      </motion.div>
+
+      <motion.div
+        className="projects-grid"
+        initial="hidden"
+        whileInView="show"
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.09 } } }}
+        viewport={{ once: true, margin: '-60px' }}
+      >
+        {projects.map((p, i) => (
+          <motion.article
+            key={p.id}
+            className={`project-card ${i === 0 ? 'project-card--featured' : ''}`}
+            variants={inView}
+          >
+            <div className="project-card-inner">
+              <header className="project-card-header">
+                <div className="project-card-meta">
+                  <span className="project-category">{p.category}</span>
+                  {p.githubUrl && (
+                    <a
+                      href={p.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-github"
+                      aria-label="GitHub"
+                      onClick={e => e.stopPropagation()}
+                    >
+                      <FaGithub />
+                    </a>
+                  )}
+                </div>
+                <h3 className="project-title">{p.title}</h3>
+              </header>
+
+              <p className="project-desc">{p.description}</p>
+
+              <footer className="project-tech">
+                {p.technologies.map(t => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </footer>
+            </div>
+
+            {/* Accent line on hover */}
+            <div className="project-card-glow" aria-hidden="true" />
+          </motion.article>
+        ))}
+      </motion.div>
+
+      <motion.div
+        className="projects-cta-row"
+        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3 }} viewport={{ once: true }}
+      >
+        <a
+          href="https://github.com/petr-ngn"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost projects-more"
+        >
+          <FaGithub />
+          <span>More on GitHub</span>
+        </a>
+      </motion.div>
+
+    </div>
+  </section>
+);
 
 export default Projects;
