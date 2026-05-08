@@ -11,22 +11,39 @@ interface ContactForm {
   message: string;
 }
 
+/** Honeypot name — must not be mapped in the EmailJS template (only sent if using sendForm). */
+const HP_NAME = 'company';
+
+const MAX = { user_name: 80, user_email: 254, subject: 120, message: 2000 } as const;
+const THROTTLE_MS = 30_000;
+const THROTTLE_KEY = 'portfolio_contact_last_submit';
+const GENERIC_SEND_ERROR =
+  'Could not send. Try again or email ngn.petr@gmail.com';
+const RATE_LIMIT_MESSAGE = 'Please wait a moment before sending another message.';
+const VALIDATION_ERROR = 'Please fill in all fields.';
+
+const emptyForm = (): ContactForm => ({
+  user_name: '',
+  user_email: '',
+  subject: '',
+  message: '',
+});
+
 const inView = {
   hidden: { opacity: 0, y: 24 },
   show:   { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.19, 1, 0.22, 1] } },
 };
 
 const Contact: React.FC = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState<ContactForm>({
-    user_name: '', user_email: '', subject: '', message: '',
-  });
+  const hpRef = useRef<HTMLInputElement>(null);
+  const [formData, setFormData] = useState<ContactForm>(emptyForm());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    if (name === HP_NAME) return;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -37,24 +54,85 @@ const Contact: React.FC = () => {
     setErrorMessage('');
 
     try {
-      const serviceId  = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-      const publicKey  = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS not configured. Please contact me directly at ngn.petr@gmail.com');
+      if (hpRef.current?.value.trim()) {
+        hpRef.current.value = '';
+        setFormData(emptyForm());
+        setSubmitStatus('success');
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+        return;
       }
 
-      emailjs.init(publicKey);
-      await emailjs.sendForm(serviceId, templateId, formRef.current!, publicKey);
+      const now = Date.now();
+      const lastRaw = typeof window !== 'undefined' ? sessionStorage.getItem(THROTTLE_KEY) : null;
+      const last = lastRaw ? Number(lastRaw) : 0;
+      if (last && now - last < THROTTLE_MS) {
+        setErrorMessage(RATE_LIMIT_MESSAGE);
+        setSubmitStatus('error');
+        setTimeout(() => {
+          setSubmitStatus('idle');
+          setErrorMessage('');
+        }, 8000);
+        return;
+      }
 
-      setFormData({ user_name: '', user_email: '', subject: '', message: '' });
+      const trimmed: ContactForm = {
+        user_name: formData.user_name.trim(),
+        user_email: formData.user_email.trim(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+      };
+
+      if (!trimmed.user_name || !trimmed.user_email || !trimmed.subject || !trimmed.message) {
+        setErrorMessage(VALIDATION_ERROR);
+        setSubmitStatus('error');
+        setTimeout(() => {
+          setSubmitStatus('idle');
+          setErrorMessage('');
+        }, 8000);
+        return;
+      }
+
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        if (process.env.NODE_ENV === 'development') {
+          console.error('EmailJS env vars are missing');
+        }
+        setErrorMessage(GENERIC_SEND_ERROR);
+        setSubmitStatus('error');
+        setTimeout(() => {
+          setSubmitStatus('idle');
+          setErrorMessage('');
+        }, 8000);
+        return;
+      }
+
+      const templateParams: Record<string, unknown> = {
+        user_name: trimmed.user_name,
+        user_email: trimmed.user_email,
+        subject: trimmed.subject,
+        message: trimmed.message,
+      };
+
+      emailjs.init(publicKey);
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      sessionStorage.setItem(THROTTLE_KEY, String(Date.now()));
+      setFormData(emptyForm());
       setSubmitStatus('success');
       setTimeout(() => setSubmitStatus('idle'), 5000);
-    } catch (error: any) {
-      setErrorMessage(error.message ?? 'Sorry, something went wrong. Please try again or email ngn.petr@gmail.com');
+    } catch (error: unknown) {
+      if (process.env.NODE_ENV === 'development') {
+        console.error(error);
+      }
+      setErrorMessage(GENERIC_SEND_ERROR);
       setSubmitStatus('error');
-      setTimeout(() => { setSubmitStatus('idle'); setErrorMessage(''); }, 8000);
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setErrorMessage('');
+      }, 8000);
     } finally {
       setIsSubmitting(false);
     }
@@ -119,7 +197,20 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
             viewport={{ once: true }}
           >
-            <form ref={formRef} className="contact-form" onSubmit={handleSubmit} noValidate>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+
+              <div className="contact-hp" aria-hidden="true">
+                <label htmlFor={HP_NAME}>Company</label>
+                <input
+                  ref={hpRef}
+                  id={HP_NAME}
+                  name={HP_NAME}
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  defaultValue=""
+                />
+              </div>
 
               <div className="form-row">
                 <div className="form-field">
@@ -130,6 +221,7 @@ const Contact: React.FC = () => {
                     value={formData.user_name}
                     onChange={handleChange}
                     placeholder="Your name"
+                    maxLength={MAX.user_name}
                     required
                   />
                 </div>
@@ -141,6 +233,7 @@ const Contact: React.FC = () => {
                     value={formData.user_email}
                     onChange={handleChange}
                     placeholder="your@email.com"
+                    maxLength={MAX.user_email}
                     required
                   />
                 </div>
@@ -154,6 +247,7 @@ const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="What's this about?"
+                  maxLength={MAX.subject}
                   required
                 />
               </div>
@@ -167,6 +261,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   placeholder="Tell me about your project or inquiry..."
                   rows={5}
+                  maxLength={MAX.message}
                   required
                 />
               </div>
