@@ -13,11 +13,11 @@ interface EduItem {
 
 const education: EduItem[] = [
   {
-    degree: "Master's in Data and Analytics for Business",
+    degree: "Data and Analytics for Business",
     institution: 'Prague University of Economics and Business — Faculty of Informatics and Statistics',
-    period: '2022 — present',
+    period: '2022 — 2023',
     details: [
-      'Thesis: Deployment of LLM-based Applications in AWS (in progress)',
+      'Pursued a 2nd Master\'s degree, completed the whole coursework, but did not finish the program due to focus on transition to my full-time AI/ML career and freelancing opportunities.',
       'Coursework: Cloud Computing, Python Programming, Agile ML Development, Cloud BI, Data Architectures',
       'Extracurricular: Data and Business Alumni Club',
     ],

@@ -65,9 +65,7 @@ const About: React.FC = () => (
           </p>
           <p>
             My work covers the entiner lifecycle — from data pipelines and model training to
-            ML/LLM orchestration, CI/CD pipelines, cloud deployment, and production-ready integration. I'm finishing my
-            2nd Master's degree in Data &amp; AI, and volunteer as a AI / Python &amp; Data Science
-            mentor at Czechitas.
+            ML/LLM orchestration, CI/CD pipelines, cloud deployment, and production-ready integration.
           </p>
         </motion.div>
 
