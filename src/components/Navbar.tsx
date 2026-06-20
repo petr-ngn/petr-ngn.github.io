@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
         className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] }}
       >
         <div className="nav-inner">
           {/* Logo */}

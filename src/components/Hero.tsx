@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
   };
   const slide = {
     hidden: { opacity: 0, y: 28 },
-    show:   { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.19, 1, 0.22, 1] } },
+    show:   { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] } },
   };
 
   // PETR — per-letter stagger container
@@ -101,12 +101,12 @@ const Hero: React.FC = () => {
   // Each letter: clip-reveal upward
   const letterVariant = {
     hidden: { y: '105%' },
-    show:   { y: '0%', transition: { duration: 0.55, ease: [0.19, 1, 0.22, 1] } },
+    show:   { y: '0%', transition: { duration: 0.55, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] } },
   };
   // NGUYEN — whole-word, delayed after PETR letters finish
   const nguyenSlide = {
     hidden: { opacity: 0, y: 32 },
-    show:   { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.72, ease: [0.19, 1, 0.22, 1] } },
+    show:   { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.72, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] } },
   };
 
   return (

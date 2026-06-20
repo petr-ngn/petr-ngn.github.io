@@ -31,7 +31,7 @@ const emptyForm = (): ContactForm => ({
 
 const inView = {
   hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.19, 1, 0.22, 1] } },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] } },
 };
 
 const Contact: React.FC = () => {
@@ -194,7 +194,7 @@ const Contact: React.FC = () => {
             className="contact-form-wrap"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+            transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] }}
             viewport={{ once: true }}
           >
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
