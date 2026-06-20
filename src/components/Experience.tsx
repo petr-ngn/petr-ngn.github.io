@@ -19,8 +19,8 @@ const experiences: ExpItem[] = [
     location: 'Prague, CZ',
     period: '05/2025 — present',
     type: 'Contractor',
-    description: 'Delivering end-to-end AI solutions, ML predictive modelling systems, OCR engines, and multi-agent orchestrated platforms. MCP server development. Overseeing MLOps, DevOps, CI/CD pipelines, cloud infrastructure, and presales PoCs.',
-    tools: ['Python','FastAPI','Azure','OpenAI','Terraform','FastMCP','Azure Container Apps','Azure Functions','Azure App Services','GitLab','Azure Document Intelligence','Azure AI Vision','OpenAI Apps SDK','Jenkins'],
+    description: 'End-to-end AI solutions: computer vision / OCR for document processing, multi-agent orchestrated RAG platforms for enterprise, and MCP servers for e-commerce AI assistants. Real-time Speech-to-Text WebSocket app for insurance and medical transcription. Backend architecture, API development, CI/CD pipelines, and Azure cloud deployment. Presales activities, cost analysis, and PoC delivery.',
+    tools: ['Python','FastAPI','Azure','OpenAI SDK','Terraform','FastMCP','LangGraph','LangChain','LangSmith','Azure Container Apps','Azure Document Intelligence','Azure AI Vision','Azure Speech','GitLab CI/CD','React','Docker'],
   },
   {
     title: 'AI Engineer & Architect Consultant',
@@ -28,8 +28,8 @@ const experiences: ExpItem[] = [
     location: 'Prague, CZ',
     period: '07/2025 — present',
     type: 'Contractor',
-    description: 'Consultancy and AI expertise to an HR-tech B2B start-up: LLM deployment and product integration, AI task automation, RAG systems, AI agents, and wider Data Science support.',
-    tools: ['Python','TypeScript','Terraform','Redis','LangGraph','LangChain','LangSmith','AWS','AWS Bedrock','Docker','Linux','Bash','GitLab','Amazon EC2','Amazon Comprehend','AWS Lambda','MongoDB'],
+    description: 'AI consultancy for an HR-tech B2B start-up: LLM deployment and product integration, multi-agent systems, RAG pipelines, AI automation, and Data Science support for an engineering team.',
+    tools: ['Python','AWS Bedrock','Strands SDK','LangGraph','LangChain','LangSmith','Langfuse','pgvector','MongoDB','Redis','Terraform','Docker','GitLab','Amazon EC2','AWS Lambda','Amazon Comprehend'],
   },
   {
     title: 'AI & Data Science Mentor/Coach',

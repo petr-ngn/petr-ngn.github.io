@@ -6,7 +6,8 @@ const skillGroups = [
   {
     label: 'AI & Machine Learning',
     items: ['Scikit-learn', 'PyTorch', 'TensorFlow', 'HuggingFace', 'OpenAI', 'AWS Bedrock',
-            'AWS SageMaker', 'LangChain', 'LangGraph', 'LangSmith', 'Optuna', 'SHAP', 'Pydantic'],
+            'AWS SageMaker', 'LangChain', 'LangGraph', 'LangSmith', 'Langfuse', 'FastMCP',
+            'Strands SDK', 'Optuna', 'SHAP', 'Pydantic'],
   },
   {
     label: 'Cloud & DevOps',
@@ -19,12 +20,12 @@ const skillGroups = [
   },
   {
     label: 'Languages & Data',
-    items: ['Python', 'TypeScript', 'JavaScript', 'R', 'SQL', 'Polars', 'PostgreSQL', 'MongoDB', 'Redis', 'Databricks'],
+    items: ['Python', 'TypeScript', 'JavaScript', 'R', 'SQL', 'Polars', 'PostgreSQL', 'pgvector', 'MongoDB', 'Redis', 'Databricks'],
   },
 ];
 
 const coreCaps = [
-  { title: 'AI Engineering', desc: 'Chatbots, RAG, RAG systems, Multi-agent Orchestration, MCP server development.' },
+  { title: 'AI Engineering', desc: 'Chatbots, RAG systems, Multi-agent Orchestration, MCP server development.' },
   { title: 'ML Engineering', desc: 'Predictive Modelling, Deep Learning, NLP, Computer Vision, OCR.' },
   { title: 'Cloud & DevOps', desc: 'AWS, Azure, Terraform IaC, CI/CD pipelines, Unit and Integration Testing, Containerization, Shell Scripting' },
   { title: 'Full-Stack Dev',  desc: 'Python backends (FastAPI/Django), React frontends, REST APIs, database design.' },
@@ -59,12 +60,12 @@ const About: React.FC = () => (
         >
           <p>
             I'm a Full Stack AI &amp; ML Developer with diverse experience across finance,
-            Big&nbsp;4 consulting, start-up, and non-profit. Currently working as an idependent
+            Big&nbsp;4 consulting, start-up, and non-profit. Currently working as an independent
             <strong> Data Scientist / GenAI Developer for BigHub</strong> and as an
             <strong> AI Engineer &amp; Architect Consultant for LutherOne</strong>.
           </p>
           <p>
-            My work covers the entiner lifecycle — from data pipelines and model training to
+            My work covers the entire lifecycle — from data pipelines and model training to
             ML/LLM orchestration, CI/CD pipelines, cloud deployment, and production-ready integration.
           </p>
         </motion.div>
