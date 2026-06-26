@@ -19,7 +19,7 @@
   "devDependencies": {
     "ajv": "^8.11.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^16.18.0",
+    "@types/node": "^26.0.1",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "react-snap": "^1.23.0",
