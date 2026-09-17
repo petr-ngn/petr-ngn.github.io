@@ -167,6 +167,7 @@ const Hero: React.FC = () => {
 
           {/* Description */}
           <motion.p className="hero-desc" variants={slide}>
+            Founder of <span className="hero-highlight">ngnlab.io</span>.{' '}
             Experienced and versatile full-stack AI &amp; ML developer specialising in GenAI / LLM / Multi-AI-Agent Systems, DevOps, Machine Learning, Data Science, Web App Development (Backend &amp; Frontend), and Cloud Infrastructure. 
             Currently&nbsp;building and delivering end-to-end and production-ready AI / ML solutions at&nbsp;
             <span className="hero-highlight">BigHub</span> and at&nbsp;

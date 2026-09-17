@@ -59,9 +59,10 @@ const About: React.FC = () => (
           initial="hidden" whileInView="show" variants={inView} viewport={{ once: true }}
         >
           <p>
-            I'm a Full Stack AI &amp; ML Developer with diverse experience across finance,
+            I'm a Full Stack AI &amp; ML Developer and the <strong>founder of ngnlab.io</strong>,
+            with diverse experience across finance,
             Big&nbsp;4 consulting, start-up, and non-profit. Currently working as an independent
-            <strong> Data Scientist / GenAI Developer for BigHub</strong> and as an
+            <strong> ML Engineer / GenAI Developer for BigHub</strong> and as an
             <strong> AI Engineer &amp; Architect Consultant for LutherOne</strong>.
           </p>
           <p>

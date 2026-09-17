@@ -92,12 +92,12 @@ const Contact: React.FC = () => {
         return;
       }
 
-      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        if (process.env.NODE_ENV === 'development') {
+        if (import.meta.env.DEV) {
           console.error('EmailJS env vars are missing');
         }
         setErrorMessage(GENERIC_SEND_ERROR);
@@ -124,7 +124,7 @@ const Contact: React.FC = () => {
       setSubmitStatus('success');
       setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error: unknown) {
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.DEV) {
         console.error(error);
       }
       setErrorMessage(GENERIC_SEND_ERROR);

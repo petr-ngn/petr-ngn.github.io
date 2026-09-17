@@ -5,16 +5,21 @@ import './Experience.css';
 interface ExpItem {
   title: string;
   company: string;
-  location: string;
-  period: string;
-  type: string;
-  description: string;
-  tools: string[];
+  location?: string;
+  period?: string;
+  type?: string;
+  description?: string;
+  tools?: string[];
 }
 
 const experiences: ExpItem[] = [
   {
-    title: 'Data Scientist | GenAI Developer',
+    title: 'Founder',
+    company: 'ngnlab.io',
+    description: 'Independent technology consultancy and delivery partner building AI agents, production ML solutions and data science solutions, backed by DevOps and product engineering.',
+  },
+  {
+    title: 'ML Engineer | GenAI Developer',
     company: 'BigHub',
     location: 'Prague, CZ',
     period: '05/2025 — present',
@@ -134,27 +139,33 @@ const Experience: React.FC = () => {
 
               {/* Content */}
               <div className="exp-content">
-                <div className="exp-top">
-                  <div className="exp-meta-left">
-                    <span className={`exp-badge ${badgeColor[exp.type] ?? 'badge--outline'}`}>
-                      {exp.type}
-                    </span>
-                    <span className="exp-period">{exp.period}</span>
-                    <span className="exp-loc">{exp.location}</span>
+                {exp.type && (
+                  <div className="exp-top">
+                    <div className="exp-meta-left">
+                      <span className={`exp-badge ${badgeColor[exp.type] ?? 'badge--outline'}`}>
+                        {exp.type}
+                      </span>
+                      <span className="exp-period">{exp.period}</span>
+                      <span className="exp-loc">{exp.location}</span>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <h3 className="exp-title">{exp.title}</h3>
                 <p className="exp-company">{exp.company}</p>
 
-                <div className="exp-body">
-                  <p className="exp-desc">{exp.description}</p>
-                  <div className="exp-tools">
-                    {exp.tools.map(t => (
-                      <span key={t} className="tag">{t}</span>
-                    ))}
+                {exp.description && (
+                  <div className="exp-body">
+                    <p className="exp-desc">{exp.description}</p>
+                    {exp.tools && (
+                      <div className="exp-tools">
+                        {exp.tools.map(t => (
+                          <span key={t} className="tag">{t}</span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </div>
+                )}
               </div>
             </motion.div>
           ))}

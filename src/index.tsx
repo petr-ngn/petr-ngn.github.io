@@ -7,7 +7,7 @@ const rootElement = document.getElementById('root') as HTMLElement;
 
 // Progressive-enhancement HTML in public/index.html puts a `.static-content` shell
 // inside #root. That DOM does not match <App />, so hydrating it throws. Only
-// hydrate when the tree is real react-snap / React output (no manual shell).
+// hydrate when the tree is prerendered React output (no manual shell).
 const hasManualStaticShell =
   rootElement.querySelector(':scope > .static-content') !== null;
 
