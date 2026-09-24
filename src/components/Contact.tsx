@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaGlobe } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
@@ -185,6 +185,11 @@ const Contact: React.FC = () => {
                  className="social-btn">
                 <FaGithub />
                 <span>GitHub</span>
+              </a>
+              <a href="https://ngnlab.io" target="_blank" rel="noopener noreferrer"
+                 className="social-btn">
+                <FaGlobe />
+                <span>ngnlab.io</span>
               </a>
             </div>
           </motion.div>

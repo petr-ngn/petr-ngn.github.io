@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from 'react-icons/fa';
 import './Hero.css';
 
 const Hero: React.FC = () => {
@@ -195,6 +195,11 @@ const Hero: React.FC = () => {
                className="hero-social-link" aria-label="GitHub">
               <FaGithub />
               <span>GitHub</span>
+            </a>
+            <a href="https://ngnlab.io" target="_blank" rel="noopener noreferrer"
+               className="hero-social-link" aria-label="ngnlab.io">
+              <FaGlobe />
+              <span>ngnlab.io</span>
             </a>
             <a href="mailto:ngn.petr@gmail.com"
                className="hero-social-link" aria-label="Email">

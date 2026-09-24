@@ -71,6 +71,7 @@ a.contact-row:hover .contact-row-value { color: var(--acid); }
 /* ── Social buttons ── */
 .contact-social {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
 }
 
